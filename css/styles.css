@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Spartan', sans-serif;
+}
+
+/* DESCUBRIMIENTO: hacer zoom in es equivalente a disminuir el width de la pantalla. Hacer zoom out es equivalente a aumentar
+el width de la pantalla */
+
+html {
+  font-size: 0.8125rem; /* 13px */
+}
+
+@media (min-width: 500px) {
+  html {
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+@media (min-width: 650px) {
+  html {
+    font-size: 1.0625rem; /* 17px */
+  }
+}
+
+@media (min-width: 1125px) {
+  html {
+    font-size: 1.125rem; /* 18px */
+  }
+}
+
+body {
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: hsl(300, 43%, 22%); /* Very dark magenta: h1, Rated 5 Stars, anchors */
+
+  background-image: url("C:/Users/sport/Google Drive/Back Up - Act 13-06/Escritorio/Solidity/Web Development Proyects/Social proof section_v1/images/bg-pattern-top-mobile.svg"), url("C:/Users/sport/Google Drive/Back Up - Act 13-06/Escritorio/Solidity/Web Development Proyects/Social proof section_v1/images/bg-pattern-bottom-mobile.svg");
+  background-position: top left, bottom right;
+  background-size: auto, auto; /* el tamaño de la imagen se muestra como su tamaño original */
+  background-repeat: no-repeat, no-repeat;
+}
+
+@media (min-width: 1000px) {
+  body {
+    background-image: url("C:/Users/sport/Google Drive/Back Up - Act 13-06/Escritorio/Solidity/Web Development Proyects/Social proof section_v1/images/bg-pattern-top-desktop.svg"), url("C:/Users/sport/Google Drive/Back Up - Act 13-06/Escritorio/Solidity/Web Development Proyects/Social proof section_v1/images/bg-pattern-bottom-desktop.svg");
+  }
+}
+
+a {
+  text-decoration: none;
+  font-weight: 700;
+  color: inherit;
+}
+
+a:hover, a:active {
+  color: hsl(333, 80%, 67%);
+}
+
+.container {
+  width: 88%;
+}
+
+@media (min-width: 1000px) {
+  .container {
+    width: 83%; /* achicar márgenes izquierda y derecha */
+    max-width: 74rem; /* 1184px. Si no pusiera max-width: 74rem, cuando hago zoom out (para ver más chicas las letras), el
+    container se separaría para la izquierda del todo y tomaría todo el ancho. Me quedarían los items muy separados.
+    No le puedo poner max-width en % dado que sino se me separa cuando achico. */
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding-top: 7rem;
+    /* margin: 6.875rem 3.75rem; sacados. Puestos en title y en paragraph del footer*/
+  }
+}
+
+.container__title h1 {
+  text-align: center;
+  font-size: 2.3125rem; /* 37px */
+  line-height: 1.1;
+  margin-top: 2.5625em; /* 41px */
+}
+
+@media (min-width: 1000px) {
+  .container__title h1 {
+    text-align: start; /* align to the left */
+    font-size: 2.5rem; /* 40px */
+    margin-top: 0; /* para que no se choque con el padding-top que le determiné al container previamente */
+  }
+}
+
+.container__title h2 {
+  color: hsl(303, 10%, 53%);
+  font-weight: 400; /* no negrita */
+  font-size: 1.0625rem; /* 17px */
+  text-align: center;
+  margin: 1.875rem 0 3.75rem;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+@media (min-width: 1000px) {
+  .container__title h2 {
+    text-align: left;
+    font-size: 0.8125rem; /* 13px */
+    margin-top: 0.625rem; /* 10px */
+    width: 115%; /* para que sobrepase el 40% de width de la columna 1 (según la grilla que definimos). */
+    max-width: 458px; /* para que no se agrande indefinidamente. En caso que no lo ponga, con width > 1200px,
+    veré que no queda el largo igual al del diseño */
+  }
+}
+
+.container__ratings {
+  margin-bottom: 3.75rem; /* 60px */
+}
+
+@media (min-width: 1000px) {
+  .container__ratings {
+    font-size: 0.75rem; /* 12px */
+    margin-top: 3%;
+  }
+}
+
+.container__ratings__rating {
+  margin: 0 auto 1.25rem; /* 20px. Margen de cada rectángulo de rating hacia abajo */
+  padding: 0.9375rem 0; /* 15px. Espacio adentro de cada rectángulo de rating.*/
+  max-width: 39.6rem; /* de esta forma, si sigo ampliando el width de la pantalla, los rectángulos con las stars no se
+  alargan indefinidamente */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* en la version Mobile View esto es equivalente a tener las estrellas en la primera fila y el Rated 5 Stars.. en
+  la segunda línea (es decir, stacked, una abajo de la otra) */
+
+  background-color: hsl(300, 24%, 96%);
+  font-weight: 700; /* todo lo que va adentro del rectángulo de rating es en negrita */
+  border-radius: 8px; /* círculo apenas redondeado */
+}
+
+@media (min-width: 500px) {
+  .container__ratings__rating {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    /* al aumentar un poco el width, pero manteniéndonos todavía en la mobile view, las estrellas tienen que estar
+    a la izquierda y el texto tiene que estar a la derecha (no stacked, sino row) */
+  }
+}
+
+@media (min-width: 1000px) {
+  .container__ratings__rating {
+    width: 85%; /* esto para que el width del rectángulo con los ratings vaya variando a medida cambio el width de la pantalla */
+    max-width: 24rem; /* para que no se alarguen indefinidamente. 384px */
+    margin: 0 auto 1.1rem; /* 17.6px */
+  }
+}
+
+.container__ratings__rating__stars {
+  display: flex;
+  justify-content: space-between; /* espacio entre estrellas, pero no a izquierda y derecha */
+  width: 9.375rem; /* 150px. Largo de la línea de estrellas */
+  margin: 0 0 1.25rem; /* 20px. Margen debajo de la línea de estrellas para mobile view. */
+}
+
+@media (min-width: 500px) {
+  .container__ratings__rating__stars {
+    margin: 0 1.5625rem; /* margen a izquierda y derecha de la línea de estrellas para mobile view. 25px */
+  }
+}
+
+@media (min-width: 1000px) {
+  .container__ratings__rating__stars {
+    width: 6.25rem; /* largo del div de las estrellas para desktop view. 100px */
+  }
+}
+
+@media (min-width: 1000px) {
+  .container__ratings__rating:nth-child(3) {
+    margin-right: 0;
+  }
+
+  .container__ratings__rating:nth-child(2) {
+    margin-right: 2.5rem; /* 40px */
+  }
+
+  .container__ratings__rating:nth-child(1) {
+    margin-right: 5rem; /* 80px */
+  }
+}
+
+/* código de arriba: escalonado de los rectángulos de rating para desktop view */
+
+@media (min-width: 1000px) {
+  .container__reviews {
+    grid-column: 1/3; /* abarca todo el ancho la segunda fila, en el desktop view (agarra las dos columnas) */
+    display: flex; /* para poder usar space between */
+    justify-content: space-between; /* espacio entre rectángulos de review */
+    align-items: flex-start; /* comienzan desde más arriba de todo */
+  }
+}
+
+.container__reviews__review {
+  background-color: hsl(300, 43%, 22%); /* color de fondo de tarjetas de review */
+  color: hsl(300, 24%, 96%); /* color de texto de tarjetas de review */
+  margin: 0 auto 1.25rem; /* 20px. Espacio entre cada tarjeta de review para mobile view */
+  max-width: 39.6rem; /* 633.6px. Se pone max-width para que no se alarguen indefinidamente las tarjetas de review */
+  padding: 2.8125rem; /* padding del contenido para mobile view. 45px */
+  border-radius: 8px; /* semi-redondeo tarjetas de review */
+  line-height: 1.75; /* espacio entre líneas tarjetas de review */
+}
+
+@media (min-width: 1000px) {
+  .container__reviews__review {
+    font-size: 0.6875rem; /* 11px. Tamaño de texto tarjetas de review. Desktop view */
+    max-width: 31.75%; /* largo de las tarjetas de review. Se pone en relación al parent element que es el reviews */
+    height: 90%; /* si no le pongo un height en %, cuando vaya achicando el width de la pantalla hay veces que una determinada
+    review me va a quedar más grande (la tarjeta violeta) que otra. Siempre en % así es width moving responsive. */
+    margin: 0;
+    padding: 2.1875rem 1.875rem; /* 35px 30px. Margen adentro del contenido de las tarjetas de review */
+    font-weight: 500; /* apenas negrita */
+  }
+
+  .container__reviews__review:nth-child(1) {
+    margin-top: 0;
+  }
+
+  .container__reviews__review:nth-child(2) {
+    margin-top: 0.9375rem; /* 15px */
+  }
+
+  .container__reviews__review:nth-child(3) {
+    margin-top: 1.875rem; /* 30px */
+  }
+}
+
+/* líneas de código de arriba: escalado tarjetas de review */
+
+.container__reviews__review__authorinfo {
+  margin-bottom: 2.5rem; /* 40px. Margen hacia abajo del div de imagen y nombre y verified buyer, para mobile view */
+  line-height: 1.5; /* espacio entre líneas para mobile view */
+  font-weight: 700; /* negrita del nombre del autor de la review + verified buyer */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  /* con esto genero que se vea la imagen y al lado el nombre del autor + verified buyer */
+}
+
+@media (min-width: 1000px) {
+  .container__reviews__review__authorinfo {
+    margin-bottom: 1.25rem; /* espacio entre imagen, nombre del autor y verified buyer, y texto de la review. 20px.
+    desktop view */
+  }
+}
+
+.container__reviews__review__authorinfo__image {
+  border-radius: 50%; /* imagen redonda */
+  max-width: 13%; /* tamaño de la imagen */
+  float: left; /* para que la imagen se vea a la izquierda del autor de la review + verified buyer */
+  margin-right: 1.875rem; /* 30px. Margen a la derecha de la imagen */
+}
+
+.container__reviews__review__authorinfo__name__p {
+  font-weight: 400; /* texto normal (review) */
+  color: hsl(333, 80%, 67%); /* color de texto de review */
+}
+
+footer {
+  text-align: center; /* centrado */
+  line-height: 2; /* espacio entre líneas */
+  font-size: 0.875rem; /* 14px. Tamaño del footer */
+}
+
+.footer__attribution {
+  margin: 2.5em 0 1.25rem; /* 40px 0 20px. Margen arriba y abajo de footer */
+}
+
+.footer__me {
+  display: block; /* para que se vean en dos líneas diferentes */
+}
+
+@media (min-width: 650px) {
+  .footer__me {
+    display: inline; /* mobile view, a partir de 650px, se verán en la misma línea */
+  }
+}
+
+@media (min-width: 1000px) {
+  footer {
+    margin-top: 3.125rem; /* 50px. Margen arriba footer para desktop view. */
+    font-size: 0.75rem; /* 12px. Tamaño de fuente de footer */
+  }
+}
